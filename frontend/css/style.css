@@ -12,8 +12,8 @@
 }
 
 body{
-    background-image: url(https://images.unsplash.com/photo-1497250681960-ef046c08a56e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    /* background-color: rgb(172, 172, 172); */
+    background: rgb(2,0,36);
+background: linear-gradient(177deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);
     color: #f2f2f2;
 }
 .container{
