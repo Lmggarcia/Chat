@@ -9,6 +9,8 @@ const chatForm = chat.querySelector(".chat_form")
 const chatInput = chat.querySelector(".chat_input")
 const chatMessages = chat.querySelector(".chat_messages")
 
+const user = { id: "", name: "", color: ""}
+
 const colors = [
     "cadetblue",
     "hotpink",
@@ -19,8 +21,6 @@ const colors = [
     "aqua",
     "chartreuse"
 ]
-
-const user = { id: "", name: "", color: ""}
 
 let websocket
 
@@ -52,7 +52,7 @@ const createMessageOtherElement = (content, sender, senderColor) => {
     return div
 }
 
-const getRandomColor = ()=> {
+const getRandomColor = () => {
     const randomIndex = Math.floor(Math.random() * colors.length)
     return colors[randomIndex]
 }
@@ -88,7 +88,6 @@ const handleLogin = (event) => {
 
     websocket = new WebSocket("wss://chat-backend-xhs3.onrender.com")
     websocket.onmessage = processMessage
-
 }
 
 const sendMessage = (event) => {
