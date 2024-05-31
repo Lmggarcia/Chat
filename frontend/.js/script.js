@@ -73,6 +73,10 @@ const processMessage = ({data}) => {
 
     chatMessages.appendChild(message)
 
+    if (userId != user.id){
+        showNotificatioin(userName, content)
+    }
+
     scrollScreen()
 }
 
@@ -88,6 +92,8 @@ const handleLogin = (event) => {
 
     websocket = new WebSocket("wss://chat-backend-xhs3.onrender.com")
     websocket.onmessage = processMessage
+
+    requestNotificationPermission()
 }
 
 const sendMessage = (event) => {
@@ -103,6 +109,24 @@ const sendMessage = (event) => {
     websocket.send(JSON.stringify(message))
 
     chatInput.value = ""
+}
+
+const requestNotificationPermission = () => {
+    if (Notification.permission !== "granted"){
+        Notification.requestPermission().then(permission => {
+            if (permission !== "granted"){
+                console.log("Permission denied for notifications.")
+            }
+        })
+    }
+}
+
+const showNotificatioin = (title, message) => {
+    if (Notification.permission === "granted"){
+        new Notification(title, {
+            body: message
+        })
+    }
 }
 
 loginForm.addEventListener("submit", handleLogin)
